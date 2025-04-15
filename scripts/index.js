@@ -13,8 +13,8 @@ let date = new Date(elmtDate.value);
 date.toISOString()
 console.log(date);
 
-
-fetch(`http://localhost:3000/trips?${arrival}&${departure}&${date}`)
+function searchTrips() {
+fetch(`http://localhost:3000/trips?arrival=${arrival}&departure=${departure}&date=${date}`)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
@@ -25,7 +25,7 @@ fetch(`http://localhost:3000/trips?${arrival}&${departure}&${date}`)
         document.querySelector("result").className = "";
         document.querySelector('#default-result').style.display="none"
     // cas avec aucun résultat
-    if (data.statusCode === 400) {
+    if ( data.length===0){
         document.querySelector('#result-not-found').style.display="flex"
     }
     else { //cas avec au moins un résultat
@@ -44,4 +44,6 @@ fetch(`http://localhost:3000/trips?${arrival}&${departure}&${date}`)
      
     }
     
-  });
+  })
+    .catch(document.querySelector('#result-not-found').style.display="flex") // cas d'erreur de la query - resultat not found
+};
