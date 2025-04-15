@@ -31,7 +31,8 @@ color: #3ca48e;
 font-size: 20px;
 text-decoration: none;
 }
-.logo a:visited,
+
+a:visited,
 a:hover, 
 a: active {
   color: #3ca48e; 
@@ -86,16 +87,17 @@ align-items: center;
 
 .results-box {
   background-color: white;
-  min-width: 250px;
-  min-height: 300px;
+  min-width: 250;
+  height: 300px;
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
   overflow:auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center
-;
+  justify-content: space-between;
+  overflow-y: auto;
   }
 
 input {
@@ -120,6 +122,7 @@ color: white;
 font-weight: bold;
 border: none;
 cursor: pointer;
+flex:0;
 }
 
 .book-button {
@@ -138,14 +141,23 @@ cursor: pointer;
 
 .result {
 display: none;
+width : 100%
 justify-content: space-between;
 align-items: center;
+text-align:center;
 padding: 8px 0;
 border-bottom: 1px solid #eee;
+background-color: lightgrey;
 }
 
-.last-child {
+.last-result {
 border-bottom: none;
+}
+
+.result-trip, .result-trip-time, .result-trip-price {
+  padding: 5px;
+  margin:5px;
+ 
 }
 
 #default-result {
@@ -157,6 +169,9 @@ border-bottom: none;
 
 #result-not-found {
   display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 #default-result-image {
