@@ -11,9 +11,9 @@
     <title>Tickethack</title>
 
   </head>
-  <body>
+  <body class="index-body">
     <header>
-      <div class="logo">Tickethack</div>
+      <a class = "logo" href="./index.html">Tickethack</a>
       <nav>
         <a href="./cart.html">Cart</a>
         <a href="./bookings.html">Bookings</a>
@@ -27,8 +27,8 @@
   
     <section class="search-section">
       <div class="search-box">
-        <input type="text" id= "search-departure" placeholder="de (ex. Paris)" />
-        <input type="text" id= "search-arrival" placeholder="à (ex. Lyon)" />
+        <input type="text" id= "search-departure" placeholder="Departure" />
+        <input type="text" id= "search-arrival" placeholder="Arrival" />
         <input type="date" id="search-date" />
         <button id="trip-search-button">Search</button>
       </div>
@@ -36,7 +36,7 @@
       <div class="results-box">
         <div id="result-not-found">
           <img id = "img-result-not-found" src="./assets/images/notfound.png" alt="No trip found">
-          <p>No trip found</p>
+          <p>No trip found.</p>
         </div>
         <div id = "default-result">
           <img id = "default-result-image" src="./assets/images/train.png" alt="Default train image">

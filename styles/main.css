@@ -1,10 +1,13 @@
 
-body {
+body{
 margin: 0;
 font-family: 'Inter', sans-serif;
-background: url('../assets/images/background.jpg') top/cover no-repeat;
 color: #333;
 }
+
+.index-body{
+  background: url('../assets/images/background.jpg') top/cover no-repeat;
+  }
 
 header {
 display: flex;
@@ -21,6 +24,13 @@ p {
 font-weight: 600;
 color: #3ca48e;
 font-size: 20px;
+text-decoration: none;
+}
+.logo a:visited,
+a:hover, 
+a: active {
+  color: #3ca48e; 
+  text-decoration: none; 
 }
 
 nav a {
@@ -66,6 +76,7 @@ margin: 10px;
 overflow:auto;
 display: flex;
 flex-direction: column;
+align-items: center;
 }
 
 .results-box {
@@ -86,7 +97,7 @@ input {
 display: block;
 margin: 10px ;
 padding: 10px;
-width: 100%;
+width: 90%;
 border: 1px solid #ccc;
 border-radius: 6px;
 font-family: 'Inter', sans-serif;
@@ -145,6 +156,15 @@ border-bottom: none;
 
 #default-result-image {
   height: 100px;
+  padding-left: 50px;
+  padding-right:50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #3ca48e
+
+
+}
+#img-result-not-found {
+  height: 120px;
   padding-left: 50px;
   padding-right:50px;
   padding-bottom: 50px;
