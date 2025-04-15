@@ -9,11 +9,16 @@ color: #333;
   background: url('../assets/images/background.jpg') top/cover no-repeat;
   }
 
+.other-body {
+  background-color:lightgray
+}
+
 header {
 display: flex;
 justify-content: space-between;
 padding: 20px 40px;
 background-color: white;
+z-index: 1;
 }
 
 p {
