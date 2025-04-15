@@ -2,9 +2,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/styles/main.css" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tickethack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./styles/main.css" />
+
+    <title>Tickethack</title>
+
   </head>
-  <body></body>
+  <body class="index-body">
+    <header>
+      <a class = "logo" href="./index.html">Tickethack</a>
+      <nav>
+        <a href="./cart.html">Cart</a>
+        <a href="./bookings.html">Bookings</a>
+      </nav>
+    </header>
+    
+    
+    <section class="headline">
+      <h1>Explore the world effortlessly by train!</h1>
+      <p>Compare, book and enjoy cheap prices for train tickets: your journey starts on Tickethack.</p>
+    </section>
+  
+    <section class="search-section">
+      <div class="search-box">
+        <input type="text" id= "search-departure" placeholder="Departure" />
+        <input type="text" id= "search-arrival" placeholder="Arrival" />
+        <input type="date" id="search-date" />
+        <button id="trip-search-button">Search</button>
+      </div>
+  
+      <div class="results-box">
+        <div id="result-not-found">
+          <img id = "img-result-not-found" src="./assets/images/notfound.png" alt="No trip found">
+          <p>No trip found.</p>
+        </div>
+        <div id = "default-result">
+          <img id = "default-result-image" src="./assets/images/train.png" alt="Default train image">
+          <p id = "defaul-result-message">It's time to book your future trip</p>
+        </div>
+        <div class="result">
+          <p class="result-trip"></p>
+          <p class="result-trip-time"></p>
+          <p class="result-trip-price"></p>
+          <button class="book-button">Book</button>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
+
