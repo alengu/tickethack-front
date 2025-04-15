@@ -5,7 +5,7 @@ let elmtArrival = document.querySelector("#search-arrival");
 let elmtDeparture = document.querySelector("#search-departure");
 let elmtDate = document.querySelector("#search-date");
 let elmtresultTemplate = document.createElement("div");
-elmtresultTemplate.classList.add(".result");
+elmtresultTemplate.classList.add("result");
 
 
 document.querySelector('#trip-search-button').addEventListener('click', ()=> {
