@@ -2,35 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tickethack</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/other-main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
 
     <title>Tickethack cart</title>
-
   </head>
-<body class = "other-body">
+  <body class="other-body">
     <header>
-        <a class = "logo" href="./index.html">Tickethack</a>
+      <a class="logo" href="./index.html">Tickethack</a>
       <nav>
         <a href="./cart.html">Cart</a>
         <a href="./bookings.html">Bookings</a>
       </nav>
     </header>
-    
-    <section class="cart-section">
-        <div >
-            <p> my cart </p>
-        </div>
-                
-        <div>list des cart trips</div>
-        <div>total</div>
 
-        
-            <button id="trip-search-button">Search</button>
+    <section id="cart-section">
+      <div id="cart-section-content-results">
+        <div id="cart-header">
+          <p>My cart</p>
         </div>
+        <div id="cart-list"></div>
+        <div id="cart-footer">
+          <div id="total-container">Total : <span id="total"></span>€</div>
+          <button id="cart-book-button" cart-id="">Purchase</button>
+        </div>
+      </div>
+      <div id="cart-section-content-no-results">
+        <p>No ticket in your cart.</p>
+        <p>Why no plan a trip?</p>
+      </div>
     </section>
-
-</body>
+    <script src="./scripts/cart.js"></script>
+  </body>
+</html>
