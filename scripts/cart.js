@@ -18,7 +18,7 @@ const hideResults = () => {
     "none";
 
   document.querySelector("#cart-section-content-no-results").style.display =
-    "block";
+    "flex";
 };
 
 const showResults = () => {
@@ -27,6 +27,19 @@ const showResults = () => {
 
   document.querySelector("#cart-section-content-no-results").style.display =
     "none";
+};
+
+const showLoader = () => {
+  document.querySelector("#cart-section-content-results").style.display =
+    "none";
+
+  document.querySelector("#cart-section-content-no-results").style.display =
+    "none";
+  document.querySelector("#loader").style.display = "flex";
+};
+
+const hideLoader = () => {
+  document.querySelector("#loader").style.display = "none";
 };
 
 const addIdToPurchaseBtn = (id) => {
@@ -43,6 +56,7 @@ const isResultsEmpty = () => {
 
 const getCart = async () => {
   try {
+    showLoader();
     const responseGetCart = await fetch(`${apiUrl}/carts`);
     const cart = await responseGetCart.json();
 
@@ -51,13 +65,16 @@ const getCart = async () => {
         generateCartElement(cart);
       setTotal(cart.totalCart);
       addIdToPurchaseBtn(cart._id);
+      hideLoader();
       showResults();
       addEventListenerDelete();
     } else {
+      hideLoader();
       hideResults();
     }
   } catch (e) {
     console.log(e);
+    hideLoader();
     hideResults();
   }
 };

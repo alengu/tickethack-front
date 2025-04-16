@@ -13,31 +13,30 @@
     <link rel="stylesheet" href="./styles/other-main.css" />
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
 
-    <title>Tickethack cart</title>
+    <title>Tickethack booking</title>
   </head>
   <body class="other-body">
     <header>
       <a class="logo" href="./index.html">Tickethack</a>
       <nav>
         <a href="./cart.html">Cart</a>
-        <a href="./bookings.html">Bookings</a>
+        <a href="./bookings.html" active>Bookings</a>
       </nav>
     </header>
 
-    <section id="cart-section">
-      <div id="cart-section-content-results">
-        <div id="cart-header">
-          <p>My bookings</p>
+    <section id="booking-section">
+      <div id="loader" class="spinner"></div>
+      <div id="booking-section-content-results">
+        <div id="booking-header">
+          <p>My booking</p>
         </div>
-        <div id="cart-list"></div>
-        <div id="cart-footer">
-          <div id="total-container">Total : <span id="total"></span>€</div>
-          <button id="cart-book-button" cart-id="">Purchase</button>
-        </div>
-        <div id="cart-section-content-no-results">
-          <p>No booking yet.</p>
-          <p>Why no plan a trip?</p>
-        </div>
+        <div id="booking-list"></div>
+        <div id="line"></div>
+        <div id="booking-description">Enjoy your travels with TicketHack!</div>
+      </div>
+      <div id="booking-section-content-no-results">
+        <p>No booking yet.</p>
+        <p>Why no plan a trip?</p>
       </div>
     </section>
     <script src="./scripts/booking.js"></script>
