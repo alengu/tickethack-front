@@ -1,4 +1,12 @@
 const apiUrl = "https://tickethack-back-gray.vercel.app";
+const userID = getCookie("token");
+const connectedUserName=getCookie("username")
+
+if (userID) {
+  document.querySelector("#user-connected-name").style.display = "flex";
+  document.querySelector("#user-connected-name").textContent =
+  connectedUserName;
+}
 
 const generateTripElement = (trip) => {
   return `

@@ -1,8 +1,15 @@
 const apiUrl = "https://tickethack-back-gray.vercel.app";
+const userID = getCookie("token");
+const connectedUserName=getCookie("username")
 
+if (userID) {
+  document.querySelector("#user-connected-name").style.display = "flex";
+  document.querySelector("#user-connected-name").textContent =
+  connectedUserName;
+}
 //ne pas pouvoir sélectionner de date dans le passé
-const today = new Date().toISOString().split('T')[0];
-document.querySelector('#search-date').setAttribute('min', today);
+const today = new Date().toISOString().split("T")[0];
+document.querySelector("#search-date").setAttribute("min", today);
 
 //reinit de la page
 document.querySelector("#default-result-image").style.display = "flex";

@@ -135,3 +135,7 @@ input:valid {
 input:invalid {
   background-color: rgb(249, 201, 208);
 }
+
+#user-connected-name {
+  display: none;
+}

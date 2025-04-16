@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
 
     <title>Tickethack cart</title>
+    <script src="./scripts/cookie.js"></script>
   </head>
   <body class="other-body login-body">
     <header>
@@ -22,34 +23,76 @@
         <a href="./cart.html" active>Cart</a>
         <a href="./bookings.html">Bookings</a>
         <a href="account.html">
-            <img id = "account-logo" class ="account-image" src="./assets/images/utilisateur.png" alt="Account"  />
-          </a>
+          <img
+            id="account-logo"
+            class="account-image"
+            src="./assets/images/utilisateur.png"
+            alt="Account"
+          />
+        </a>
+        <a id="user-connected-name" href="account.html"></a>
       </nav>
     </header>
 
     <div id="container-user-info">
-      <div class="connexionCard">
+      <div id="connexion-card-signup" class="connexionCard">
         <div>
-          <p class = "connexion-card-intro">New on Tickethack? Signup here!</p>
+          <p class="connexion-card-intro">New on Tickethack? Signup here!</p>
           <div class="divider"></div>
         </div>
-        <input id="registerFirstName" type="text" placeholder="firstName" pattern= ".*\S.*"/>
-        <input id="registerLastName" type="text" placeholder="lastName" pattern= ".*\S.*" />
-        <input id="registerEmail" type="email" placeholder="E-mail" pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/" required/>
-        <input id="registerPassword" type="password" placeholder="Password" required/>
+        <input
+          id="registerFirstName"
+          type="text"
+          placeholder="firstName"
+          pattern="^.+$"
+          required
+        />
+        <input
+          id="registerLastName"
+          type="text"
+          placeholder="lastName"
+          pattern=".*\S.*"
+          required
+        />
+        <input
+          id="registerEmail"
+          type="email"
+          placeholder="E-mail"
+          pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+          required
+        />
+        <input
+          id="registerPassword"
+          type="password"
+          placeholder="Password"
+          required
+        />
         <button id="register">Register</button>
       </div>
-      <div class="connexionCard">
+      <div id="connexion-card-signin" class="connexionCard">
         <div>
-          <p class = "connexion-card-intro" >Already have an account? Signin here</p>
+          <p class="connexion-card-intro">
+            Already have an account? Signin here
+          </p>
           <div class="divider"></div>
         </div>
-        <input id="connectionEmail" type="email" placeholder="E-mail" pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/" required/>
-        <input id="connectionPassword" type="password" placeholder="Password" required/>
+        <input
+          id="connectionEmail"
+          type="email"
+          placeholder="E-mail"
+          pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+          required
+        />
+        <input
+          id="connectionPassword"
+          type="password"
+          placeholder="Password"
+          required
+        />
         <button id="connection">Connect</button>
       </div>
     </div>
 
-    <script src="./scripts/cart.js"></script>
+    <script src="./scripts/users.js"></script>
   </body>
 </html>
