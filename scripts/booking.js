@@ -9,12 +9,15 @@ const generateTripElement = (trip) => {
   const hours = duration.hours();
   const minutes = duration.minutes();
 
+  const htmlDuration =
+    duration > 0 ? `Departure in ${days}j ${hours}h ${minutes}min` : "Passed";
+
   return `
     <div class="trip-row">
         <div class="result-trip">${trip.departure} > ${trip.arrival}</div>
         <div class="result-trip-time">${tripDate.format("HH:MM")}</div>
         <div class="result-trip-price">${trip.price}€</div>
-        <div class="result-trip-departure">Departure in ${days}j ${hours}h ${minutes}min</div>
+        <div class="result-trip-departure">${htmlDuration}</div>
     </div>`;
 };
 

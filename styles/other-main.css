@@ -40,10 +40,30 @@
   margin-bottom: 20px;
   border-radius: 6px;
   align-items: center;
+  padding: 0 10px;
+}
+
+.result-trip-time,
+.result-trip-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+}
+
+.result-trip-departure {
+  justify-content: end;
 }
 
 .result-trip {
-  min-width: 200px;
+  justify-content: start;
+}
+
+.result-trip,
+.result-trip-departure {
+  width: 200px;
+  display: flex;
+  align-items: center;
 }
 
 #booking-section .result-trip {
@@ -79,4 +99,12 @@
   width: 200px;
   border: solid 1px;
   margin: 0 auto;
+}
+
+.delete-trip {
+  height: 30px;
+  aspect-ratio: 1 / 1;
+  width: 35px;
+  padding: 0;
+  align-items: center;
 }
