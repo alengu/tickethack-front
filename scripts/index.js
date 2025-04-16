@@ -43,6 +43,7 @@ const cleanResults = () => {
 
 function searchTrips(arrival, departure, date) {
   document.querySelector("#default-result").style.display = "none";
+  cleanResults();
   showLoader();
 
   fetch(
@@ -50,9 +51,7 @@ function searchTrips(arrival, departure, date) {
   )
     .then((response) => response.json())
     .then((data) => {
-      //reset visuel
       document.querySelector("#result-not-found").style.display = "none";
-      cleanResults();
 
       let elmtResultTemplate = document.createElement("div");
       elmtResultTemplate.classList.add("result");

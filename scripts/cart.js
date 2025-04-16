@@ -6,7 +6,7 @@ const generateTripElement = (trip) => {
         <div class="result-trip">${trip.departure} > ${trip.arrival}</div>
         <div class="result-trip-time">${moment(trip.date).format("HH:MM")}</div>
         <div class="result-trip-price">${trip.price}€</div>
-        <button class="delete-trip" trip-id="${trip._id}">X</button>
+        <button class="delete-trip" trip-id="${trip._id}">x</button>
     </div>`;
 };
 
