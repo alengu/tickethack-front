@@ -42,24 +42,27 @@ const cleanResults = () => {
 };
 
 function searchTrips(arrival, departure, date) {
+  document.querySelector("#default-result").style.display = "none";
+  showLoader();
+
   fetch(
     `${apiUrl}/trips?arrival=${arrival}&departure=${departure}&date=${date}`
   )
     .then((response) => response.json())
     .then((data) => {
+      //reset visuel
+      document.querySelector("#result-not-found").style.display = "none";
       cleanResults();
 
       let elmtResultTemplate = document.createElement("div");
       elmtResultTemplate.classList.add("result");
 
       //récupération de tous les trajets pour la recherche donnée
-      //reset visuel
 
-      document.querySelector("#default-result").style.display = "none";
-      document.querySelector("#result-not-found").style.display = "none";
       // cas avec aucun résultat
       if (data.length === 0) {
         console.log("case data.length = 0");
+        hideLoader();
         document.querySelector("#result-not-found").style.display = "flex";
       } else {
         //cas avec au moins un résultat
@@ -74,6 +77,7 @@ function searchTrips(arrival, departure, date) {
             <button class="book-button">Book</button>`;
 
           // on l'affiche
+
           elmtResult.style.display = "flex";
 
           if (i === data.length - 1) {
@@ -84,13 +88,22 @@ function searchTrips(arrival, departure, date) {
           document.querySelector(".results-box").appendChild(elmtResult);
           // pour le dernier enfant, il faut préciser last-result
         }
-
+        hideLoader();
         addEventBookTrip();
       }
     })
     .catch((error) => {
       console.log(error);
+      hideLoader();
       document.querySelector("#result-not-found").style.display = "flex";
       document.querySelector("#default-result").style.display = "none";
     }); // cas d'erreur de la query - resultat not found
 }
+
+const showLoader = () => {
+  document.querySelector("#loader").style.display = "flex";
+};
+
+const hideLoader = () => {
+  document.querySelector("#loader").style.display = "none";
+};
