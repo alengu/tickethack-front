@@ -12,12 +12,16 @@ body {
   background-color: lightgray;
 }
 
+.login-body {
+  background: url("../assets/images/background.jpg") top/cover no-repeat;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   padding: 20px 40px;
   background-color: white;
-  z-index: 1;
+  position: sticky;
 }
 
 p {
@@ -38,6 +42,12 @@ a:active {
   text-decoration: none;
 }
 
+nav {
+  display: flex;
+  text-align: center;
+
+}
+
 nav a {
   margin-left: 20px;
   text-decoration: none;
@@ -45,6 +55,11 @@ nav a {
   font-weight: 500;
 }
 
+#account-logo {
+  height: 20px;
+  
+
+}
 .headline {
   display: flex;
   justify-content: center;
@@ -219,3 +234,4 @@ button {
     transform: rotate(360deg);
   }
 }
+
