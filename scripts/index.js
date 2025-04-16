@@ -1,72 +1,96 @@
-//reinit de la page 
+const apiUrl = "https://tickethack-back-gray.vercel.app";
+
+//reinit de la page
 document.querySelector("#default-result-image").style.display = "flex";
 
 let elmtArrival = document.querySelector("#search-arrival");
 let elmtDeparture = document.querySelector("#search-departure");
 let elmtDate = document.querySelector("#search-date");
-let elmtresultTemplate = document.createElement("div");
-elmtresultTemplate.classList.add("result");
 
+document.querySelector("#trip-search-button").addEventListener("click", () => {
+  let arrival = elmtArrival.value;
+  let departure = elmtDeparture.value;
+  let date = new Date(elmtDate.value);
+  date = date.toISOString();
+  searchTrips(arrival, departure, date);
+});
 
-document.querySelector('#trip-search-button').addEventListener('click', ()=> {
-    let arrival = elmtArrival.value;
-    let departure = elmtDeparture.value;
-    let date = new Date(elmtDate.value);
-    date = date.toISOString()
-    
-searchTrips(arrival,departure, date)
+async function addTripToCart() {
+  try {
+    await fetch(`${apiUrl}/carts/add-trip`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tripID: this.parentNode.getAttribute("trip-id"),
+      }),
+    });
 
-})
+    document.location.href = "cart.html";
+  } catch (exception) {}
+}
 
+const addEventBookTrip = () => {
+  document.querySelectorAll(".book-button").forEach((elmt) => {
+    elmt.addEventListener("click", addTripToCart);
+  });
+};
 
-function searchTrips(arrival, departure,date) {
-fetch(`https://tickethack-back-gray.vercel.app/trips?arrival=${arrival}&departure=${departure}&date=${date}`)
-  .then((response) => response.json())
-  .then((data) => {
-    //console.log(data);
-    //récupération de tous les trajets pour la recherche donnée
-        //reset visuel
-        document.querySelector(".result").textContent = "";
-        document.querySelector(".result").style.display = "none";
-        document.querySelector(".result").className = "";
-        document.querySelector('#default-result').style.display="none"
-        document.querySelector('#result-not-found').style.display="none";
-    // cas avec aucun résultat
-    if (data.length === 0){
-        console.log("case data.length = 0")
-        document.querySelector('#result-not-found').style.display="flex"
-        
-    }
-    else { //cas avec au moins un résultat
+const cleanResults = () => {
+  document.querySelectorAll(".result-row").forEach((elemt) => elemt.remove());
+};
 
-        for (let i = 0; i<data.length;i++){
-            //on clone n fois le modèle
-            elmtresult=elmtresultTemplate.cloneNode(true)
-            let formattedDate = moment(data[i].date).format('HH:MM')
-            elmtresult.setAttribute("trip-id",data[i]._id)
-            elmtresult.innerHTML= `<div class="result-trip">${data[i].departure} > ${data[i].arrival}</div>
+function searchTrips(arrival, departure, date) {
+  fetch(
+    `${apiUrl}/trips?arrival=${arrival}&departure=${departure}&date=${date}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      cleanResults();
+
+      let elmtResultTemplate = document.createElement("div");
+      elmtResultTemplate.classList.add("result");
+
+      //récupération de tous les trajets pour la recherche donnée
+      //reset visuel
+
+      document.querySelector("#default-result").style.display = "none";
+      document.querySelector("#result-not-found").style.display = "none";
+      // cas avec aucun résultat
+      if (data.length === 0) {
+        console.log("case data.length = 0");
+        document.querySelector("#result-not-found").style.display = "flex";
+      } else {
+        //cas avec au moins un résultat
+        for (let i = 0; i < data.length; i++) {
+          //on clone n fois le modèle
+          elmtResult = elmtResultTemplate.cloneNode(true);
+          let formattedDate = moment(data[i].date).format("HH:MM");
+          elmtResult.setAttribute("trip-id", data[i]._id);
+          elmtResult.innerHTML = `<div class="result-trip">${data[i].departure} > ${data[i].arrival}</div>
             <div class="result-trip-time">${formattedDate}</div>
             <div class="result-trip-price">${data[i].price}€</div>
-            <button class="book-button">Book</button>`
-            
-            // on l'affiche
-            elmtresult.style.display="flex"
+            <button class="book-button">Book</button>`;
 
-            if (i===data.length-1) {
-                elmtresult.classList.add("last-result")
-            }
+          // on l'affiche
+          elmtResult.style.display = "flex";
+
+          if (i === data.length - 1) {
+            elmtResult.classList.add("last-result");
+          }
           //on append à la results-box
-          document.querySelector(".results-box").appendChild(elmtresult)
+          elmtResult.classList.add("result-row");
+          document.querySelector(".results-box").appendChild(elmtResult);
           // pour le dernier enfant, il faut préciser last-result
-          
         }
-            
-     
-    }
-    
-  })
-    .catch(error => {
-        document.querySelector('#result-not-found').style.display="flex";
-        document.querySelector('#default-result').style.display="none"
-     }) // cas d'erreur de la query - resultat not found
-};
+
+        addEventBookTrip();
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      document.querySelector("#result-not-found").style.display = "flex";
+      document.querySelector("#default-result").style.display = "none";
+    }); // cas d'erreur de la query - resultat not found
+}
