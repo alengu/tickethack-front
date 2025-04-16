@@ -51,7 +51,6 @@ function searchTrips(arrival, departure, date) {
   )
     .then((response) => response.json())
     .then((data) => {
-      //reset visuel
       document.querySelector("#result-not-found").style.display = "none";
 
       let elmtResultTemplate = document.createElement("div");
