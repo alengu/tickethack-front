@@ -108,3 +108,30 @@
   padding: 0;
   align-items: center;
 }
+#container-user-info {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.connexionCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 400px;
+  width: 300px;
+  padding: 20px;
+  margin-left: 70px;
+  margin-right: 70px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+input:valid {
+  background-color: rgb(192, 248, 192);
+}
+
+input:invalid {
+  background-color: rgb(249, 201, 208);
+}

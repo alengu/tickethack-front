@@ -1,5 +1,9 @@
 const apiUrl = "https://tickethack-back-gray.vercel.app";
 
+//ne pas pouvoir sélectionner de date dans le passé
+const today = new Date().toISOString().split('T')[0];
+document.querySelector('#search-date').setAttribute('min', today);
+
 //reinit de la page
 document.querySelector("#default-result-image").style.display = "flex";
 
